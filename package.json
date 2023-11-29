@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --parallel --require tsconfig-paths/register src/__tests__/*.spec.ts --exit",
-    "start": "npm run build && cross-env NODE_ENV=development node dist/server.js",
-    "dev": "cross-env NODE_ENV=development nodemon",
+    "start": "npm run build && cross-env NODE_ENV=prd node dist/server.js",
+    "dev": "cross-env NODE_ENV=dev nodemon",
     "build": "swc src -d dist --source-maps --copy-files"
   },
   "keywords": [],
