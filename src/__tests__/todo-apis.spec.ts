@@ -30,7 +30,6 @@ describe('task', () => {
       .get('/todo/tasks')
       .end((err, res) => {
         if (err) {
-          console.log({ err });
           done(err);
         } else {
           chai.expect(res).to.have.status(200);
@@ -48,13 +47,10 @@ describe('task', () => {
       .send({ title: 'From test cases stub' })
       .end((err, res) => {
         if (err) {
-          console.log({ err });
           done(err);
         } else if (res.statusCode !== 200) {
-          console.log({ error: res.body });
           done(new Error(res.body.message));
         } else {
-          console.log('success');
           console.log(res.body);
           done();
         }
