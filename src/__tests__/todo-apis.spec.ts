@@ -4,6 +4,7 @@ import server from '../server';
 import sinon from 'sinon';
 import { ToDoModel } from '@models/todo.model';
 import { ToDoInterface } from '@/interfaces/todo.interface';
+import { X_API_KEY } from '@/config';
 
 const sandbox = sinon.createSandbox();
 
@@ -28,6 +29,7 @@ describe('task', () => {
     chai
       .request(server.getServer())
       .get('/todo/tasks')
+      .set('x-api-key', X_API_KEY)
       .end((err, res) => {
         if (err) {
           done(err);
@@ -44,6 +46,7 @@ describe('task', () => {
     chai
       .request(server.getServer())
       .post('/todo/create')
+      .set('x-api-key', X_API_KEY)
       .send({ title: 'From test cases stub' })
       .end((err, res) => {
         if (err) {
