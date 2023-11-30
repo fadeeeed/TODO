@@ -4,8 +4,16 @@ import { ToDoService } from '@/services/todo.service';
 import { ToDoInterface } from '@/interfaces/todo.interface';
 
 export class ToDoController {
-  public todo = Container.get(ToDoService);
+  public todo: ToDoService = Container.get(ToDoService);
 
+  /**
+   * Retrieves all tasks.
+   *
+   * @param req - The request object containing information about the HTTP request.
+   * @param res - The response object used to send the HTTP response.
+   * @param next - The next function used to pass control to the next middleware.
+   * @returns An array of `ToDoInterface` objects representing all tasks.
+   */
   public getTasks = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const tasks: ToDoInterface[] = await this.todo.getTasks();
@@ -15,6 +23,14 @@ export class ToDoController {
     }
   };
 
+  /**
+   * Creates a new task.
+   *
+   * @param req - The request object containing information about the HTTP request.
+   * @param res - The response object used to send the HTTP response.
+   * @param next - The next function used to pass control to the next middleware.
+   * @returns The created task as a `ToDoInterface` object.
+   */
   public createTask = async (
     req: Request,
     res: Response,
@@ -29,6 +45,14 @@ export class ToDoController {
     }
   };
 
+  /**
+   * Updates an existing task.
+   *
+   * @param req - The request object containing information about the HTTP request.
+   * @param res - The response object used to send the HTTP response.
+   * @param next - The next function used to pass control to the next middleware.
+   * @returns The updated task as a `ToDoInterface` object.
+   */
   public updateTask = async (
     req: Request,
     res: Response,
